@@ -36,15 +36,15 @@ const CoachCard = ({ coach }: CoachCardProps) => {
     subscriptions.find(sub => sub.coachId === coach.id && sub.clientId === user?.id)?.status : 
     null;
 
-  const handleSubscribe = () => {
-    if (!isAuthenticated) {
-      navigate("/login");
-      return;
-    }
-    
-    requestSubscription(coach.id);
-  };
-  
+    const handleSubscribe = () => {
+      if (!isAuthenticated) {
+        console.log("User is not authenticated. Redirecting to login...");
+        navigate("/login");
+        return;
+      }
+      console.log("User is authenticated. Proceeding with subscription...");
+      requestSubscription(coach.id);
+    };
   return (
     <Card className="overflow-hidden transition-all hover:shadow-md hover:translate-y-[-5px] duration-300">
       <CardHeader className="p-0">
